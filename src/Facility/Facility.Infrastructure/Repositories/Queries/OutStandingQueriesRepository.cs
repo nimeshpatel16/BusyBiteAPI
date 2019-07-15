@@ -59,7 +59,6 @@ namespace Envision.MDM.Location.Infrastructure.Repositories.Queries
                     param.Add("@SCode", objOutStanding.partyId ==-1?0 : objOutStanding.partyId, DbType.Int32);
                     param.Add("@AgCode", objOutStanding.agentId==-1 ? 0 :objOutStanding.agentId, DbType.Int32);
 
-
                     var result = await connection.QueryAsync<POutStandingSummary>("[dbo].[SPONLINESalesOutstandingSummary]",
                         param, commandType: CommandType.StoredProcedure,commandTimeout:0);
 
