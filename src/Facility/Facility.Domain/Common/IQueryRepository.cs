@@ -12,7 +12,8 @@ namespace Envision.MDM.Location.Domain.Common
     /// <typeparam name="T"></typeparam>
     public interface IQueryRepository<T> where T : IAggregateRoot
     {
-        Task<T> GetById(int id);
+        Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetList(int pageIndex, int pageSize);
+        Task<IEnumerable<T>> GetList(string ObjName);
     }
 }

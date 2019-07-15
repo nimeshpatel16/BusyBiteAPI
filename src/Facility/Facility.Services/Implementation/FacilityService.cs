@@ -18,7 +18,7 @@ namespace Envision.MDM.Facility.Service
 
         public Task<Location.Domain.AggregatesModel.Facility> LoadFacilityById(int id)
         {
-            var facility = _facilityQueryRepository.GetById(id);
+            var facility = _facilityQueryRepository.GetByIdAsync(id);
 
             return facility;
         }

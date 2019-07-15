@@ -23,7 +23,7 @@ namespace Envision.Facility.UnitTests.Infrastructure
              
             var repository = new FacilityQueriesRepository("Test");
 
-            var result = repository.GetById(555);
+            var result = repository.GetByIdAsync(555);
 
         }
 

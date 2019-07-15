@@ -57,29 +57,59 @@ namespace Envision.MDM.Location.API.Controllers
             }
         }
 
-        //// GET api/<controller>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+       // [HttpPost(Name = "AllOutStandingList")]
+        [HttpPost]
+        [Route("OutStandingList", Name = "AllOutStandingList")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult> AllOutStandingList(Domain.AggregatesModel.RequestOutStandingSummary objOutStanding)
+        {
+            try
+            {
+                var facilities = await _outStandingService.LoadOutStandingList(objOutStanding);
+                return Ok(facilities);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error has occured. Please contact your Administrator");
+            }
+        }
 
-        // POST api/<controller>
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        [HttpPost]
+        [Route("OutStandingByParty",Name = "AllOutStandingListByParty")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult> AllOutStandingListByParty(Domain.AggregatesModel.RequestOutStandingDetail objOutStanding)
+        {
+            try
+            {
+                var facilities = await _outStandingService.LoadOutStandingListByParty(objOutStanding);
+                return Ok(facilities);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error has occured. Please contact your Administrator");
+            }
+        }
 
-        // PUT api/<controller>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/<controller>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpGet]
+        [Route("FinYear", Name = "GetFinYear")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult> GetFinYear()
+        {
+            try
+            {
+                var facilities = await _outStandingService.GetFinancialYear();
+                return Ok(facilities);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error has occured. Please contact your Administrator");
+            }
+        }
     }
 }

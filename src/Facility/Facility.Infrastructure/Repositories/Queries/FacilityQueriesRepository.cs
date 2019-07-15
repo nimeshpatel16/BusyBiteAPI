@@ -83,7 +83,7 @@ namespace Envision.MDM.Location.Infrastructure.Repositories.Queries
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Facility> GetById(int id)
+        public async Task<Facility> GetByIdAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -170,6 +170,10 @@ namespace Envision.MDM.Location.Infrastructure.Repositories.Queries
 
             return lstfacility;
         }
-        
+
+        public Task<IEnumerable<Facility>> GetList(string ObjName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -27,8 +27,28 @@ namespace Envision.MDM.Location.API.Helper.AutoFacModules
                 .As<IOutStandingQueriesRepository>()
                 .InstancePerLifetimeScope();
 
+            builder.Register(c => new AllCompanyQueriesRepository(_queriesConnectionString))
+               .As<IAllCompanyQueriesRepository>()
+               .InstancePerLifetimeScope();
+
+            builder.Register(c => new AllSupplierQueriesRepository(_queriesConnectionString))
+               .As<IAllSupplierQueriesRepository>()
+               .InstancePerLifetimeScope();
+
+            builder.Register(c => new AllAgentQueriesRepository(_queriesConnectionString))
+               .As<IAllAgentQueriesRepository>()
+               .InstancePerLifetimeScope();
+
+            builder.Register(c => new AllUserQueriesRepository(_queriesConnectionString))
+              .As<IAllUserQueriesRepository>()
+              .InstancePerLifetimeScope();
+
             builder.RegisterType<FacilityService>().As<IFacilityService>();
             builder.RegisterType<OutStandingService>().As<IOutStandingService>();
+            builder.RegisterType<CompanyService>().As<ICompanyService>();
+            builder.RegisterType<SupplierService>().As<ISupplierService>();
+            builder.RegisterType<AgentService>().As<IAgentService>();
+            builder.RegisterType<UserService>().As<IUserService>();
 
         }
     }
